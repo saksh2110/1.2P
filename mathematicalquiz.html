@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Quiz</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .quiz-container {
+    background-color: yellow;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px black(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+  }
+
+  h1 {
+    color: black;
+  }
+
+  p {
+    color: brown;
+    margin-bottom: 20px;
+  }
+
+  button {
+    background-color: blue;
+    color: beige;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: blue;
+  }
+
+   
+   @media (max-width: 768px) {
+    .quiz-container {
+      max-width: 80%;
+    }
+  }
+
+</style>
+<script>
+  function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function startQuiz() {
+    const questions = [
+      {
+        question: "What is the sum of 5 and 7?",
+        answer: 12
+      },
+      {
+        question: "What is 8 multiplied by 4?",
+        answer: 32
+      },
+      {
+        question: "What is the result of 20 divided by 5?",
+        answer: 4
+      },
+      {
+        question: "what is 9 times 3?",
+        answer: 27 
+      },
+      {
+        question: "what should you multiply to 3 to get 21",
+        answer: 7
+      }
+    ];
+
+    let score = 0;
+
+    for (const questionObj of questions) {
+      const userAnswer = parseInt(prompt(questionObj.question));
+      
+      if (!isNaN(userAnswer)) {
+        if (userAnswer === questionObj.answer) {
+          score++;
+        }
+      }
+    }
+
+    alert(`Quiz finished! Your score: ${score} out of ${questions.length}`);
+  }
+</script>
+</head>
+<body>
+<div class="quiz-container">
+  <h1>Math Quiz</h1>
+  <p>Test your mathematical skills!</p>
+  <button onclick="startQuiz()">Start Quiz</button>
+</div>
+</body>
+</html>
