@@ -1,112 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Math Quiz</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: black;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-
-  .quiz-container {
-    background-color: yellow;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px black(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 80%;
-    max-width: 400px;
-    text-align: center;
-  }
-
-  h1 {
-    color: black;
-  }
-
-  p {
-    color: brown;
-    margin-bottom: 20px;
-  }
-
-  button {
-    background-color: blue;
-    color: beige;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background-color: blue;
-  }
-
-   
-   @media (max-width: 768px) {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: olive;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
     .quiz-container {
-      max-width: 80%;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgb(204, 232, 243);
+      border-radius: 5px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     }
-  }
-
-</style>
-<script>
-  function getRandomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  function startQuiz() {
-    const questions = [
-      {
-        question: "What is the sum of 5 and 7?",
-        answer: 12
-      },
-      {
-        question: "What is 8 multiplied by 4?",
-        answer: 32
-      },
-      {
-        question: "What is the result of 20 divided by 5?",
-        answer: 4
-      },
-      {
-        question: "what is 9 times 3?",
-        answer: 27 
-      },
-      {
-        question: "what should you multiply to 3 to get 21",
-        answer: 7
-      }
-    ];
-
-    let score = 0;
-
-    for (const questionObj of questions) {
-      const userAnswer = parseInt(prompt(questionObj.question));
-      
-      if (!isNaN(userAnswer)) {
-        if (userAnswer === questionObj.answer) {
-          score++;
-        }
-      }
+    p {
+      margin: 10px 0;
     }
-
-    alert(`Quiz finished! Your score: ${score} out of ${questions.length}`);
-  }
-</script>
+    input {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid bei;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #result {
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-<div class="quiz-container">
-  <h1>Math Quiz</h1>
-  <p>Test your mathematical skills!</p>
-  <button onclick="startQuiz()">Start Quiz</button>
-</div>
+  <h1>Mathematical Quiz</h1>
+  <div class="quiz-container">
+    <p id="question1">What is the sum of 5 and 7?</p>
+    <input type="text" id="answer1">
+    <button id="submit1">Submit</button>
+    <p id="result1"></p>
+
+    <p id="question2">What is the sum of 6 and 12?</p>
+    <input type="text" id="answer2">
+    <button id="submit2">Submit</button>
+    <p id="result2"></p>
+  </div>
+
+  <script>
+   // String methods
+   const str1 = 'Hello, ';
+    const str2 = 'world!';
+    const combinedString = str1.concat(str2);
+    const upperCaseString = combinedString.toUpperCase();
+    const substring = combinedString.substring(0, 5);
+    const charAtIndex = combinedString.charAt(7);
+    const stringLength = combinedString.length;
+
+    // Number methods
+    const num1 = 10.567;
+    const roundedNum = num1.toFixed(2);
+    const parsedNum = parseFloat(roundedNum);
+    const exponentialNum = num1.toExponential(3);
+    const numAsString = num1.toString();
+    const isNum = Number.isNaN(num1);
+
+    // Array methods
+    const numbersArray = [3, 8, 2, 1, 5];
+    const sortedArray = numbersArray.sort((a, b) => a - b);
+    const reversedArray = numbersArray.reverse();
+    const joinedArray = numbersArray.join('-');
+    const poppedValue = numbersArray.pop();
+    numbersArray.push(7);
+
+    // Date methods
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    const day = currentDate.getDate();
+    const hours = currentDate.getHours();
+    const minutes = currentDate.getMinutes();
+
+    // Function methods
+    function multiply(a, b) {
+      return a * b;
+    }
+    const result1 = multiply(3, 4);
+
+    function subtract(a, b) {
+      return a - b;
+    }
+    const result2 = subtract(10, 5);
+
+    document.getElementById('submit1').addEventListener('click', function() {
+      const userAnswer1 = parseFloat(document.getElementById('answer1').value);
+      const correctAnswer1 = 5 + 7;
+      
+      if (userAnswer1 === correctAnswer1) {
+        document.getElementById('result1').textContent = 'Correct!';
+      } else {
+        document.getElementById('result1').textContent = 'Incorrect. Try again.';
+      }
+    });
+
+    document.getElementById('submit2').addEventListener('click', function() {
+  const userAnswer2 = parseFloat(document.getElementById('answer2').value); // Use 'answer2' instead of 'answer1'
+  const correctAnswer2 = 6 + 12;
+
+  if (userAnswer2 === correctAnswer2) {
+    document.getElementById('result2').textContent = 'Correct!';
+  } else {
+    document.getElementById('result2').textContent = 'Incorrect. Try again.';
+  }
+});
+
+  </script>
 </body>
 </html>
